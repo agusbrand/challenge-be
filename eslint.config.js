@@ -9,6 +9,8 @@ module.exports = [
     languageOptions: {
       globals: {
         ...globals.browser,
+        __dirname: 'readonly',
+        __filename: 'readonly',
       },
     },
   },
