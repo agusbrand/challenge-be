@@ -1,3 +1,23 @@
+## NOTES FROM THE AUTHOR
+
+The 7 API endpoints were developed.
+
+I left a file in the root dir (`Deel challenge.postman_collection.json`) that it can be imported into Postman to test the API endpoints.
+
+Note that I also included scripts in `package.json` to run eslint, prettier, and to start a Node REPL console that I used for debugging while I was working on this task.
+
+**I would have liked to have included the following items but could not do so due to time limitations:**
+
+- Add automated tests (e.g., jest or mocha)
+- Add API docs (e.g., swagger)
+- Add Typescript
+- Enhance API data input validation and rate limitng (e.g., express-validator, express-rate-limit)
+- Add a front-end to interact with the API
+
+Thank you!
+
+---
+
 # DEEL BACKEND TASK
 
 💫 Welcome! 🎉
