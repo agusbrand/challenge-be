@@ -1,6 +1,6 @@
 'use strict'
 
-const { Model } = require('sequelize')
+const { Model, Op } = require('sequelize')
 
 module.exports = (sequelize, DataTypes) => {
   class Job extends Model {
@@ -30,6 +30,13 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'Job',
+      scopes: {
+        unpaid: {
+          where: {
+            [Op.or]: [{ paid: false }, { paid: null }],
+          },
+        },
+      },
     },
   )
 

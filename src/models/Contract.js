@@ -54,6 +54,11 @@ module.exports = (sequelize, DataTypes) => {
             },
           }
         },
+        active: {
+          where: {
+            status: Contract.STATUSES.IN_PROGRESS,
+          },
+        },
         nonTerminated: {
           where: {
             status: [Contract.STATUSES.NEW, Contract.STATUSES.IN_PROGRESS],

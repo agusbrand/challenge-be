@@ -1,6 +1,6 @@
 'use strict'
 
-const ContractService = require('../services/ContractService.js')
+const ContractService = require('../services/ContractService')
 const { ResourceNotFoundError, ForbiddenError } = require('../services/errors')
 
 const getContract = async (req, res) => {

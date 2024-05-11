@@ -6,7 +6,7 @@ const router = express.Router()
 const {
   getContract,
   getContracts,
-} = require('../controllers/contractsController.js')
+} = require('../controllers/contractsController')
 
 router.get('/:id', getContract)
 router.get('/', getContracts)
