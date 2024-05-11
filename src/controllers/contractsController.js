@@ -1,19 +1,32 @@
 'use strict'
 
 const ContractService = require('../services/ContractService.js')
-const { Contract } = require('../models')
+const { ResourceNotFoundError, ForbiddenError } = require('../services/errors')
 
-/**
- * FIX ME!
- * @returns contract by id
- */
 const getContract = async (req, res) => {
-  await ContractService.getContract()
+  try {
+    const profile = req.profile
+    const contractId = parseInt(req.params.id) || 0
 
-  const { id } = req.params
-  const contract = await Contract.findOne({ where: { id } })
-  if (!contract) return res.status(404).end()
-  res.json(contract)
+    if (!contractId) {
+      return res.status(400).end()
+    }
+
+    const contract = await ContractService.getContractForProfileById({
+      profile,
+      contractId,
+    })
+
+    res.status(200).json(contract)
+  } catch (error) {
+    if (error instanceof ResourceNotFoundError) {
+      res.status(404).send(error.message)
+    } else if (error instanceof ForbiddenError) {
+      res.status(403).send(error.message)
+    } else {
+      res.status(500).end()
+    }
+  }
 }
 
 module.exports = { getContract }
