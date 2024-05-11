@@ -1,5 +1,13 @@
 // Contains business errors thrown in the service layer
 
+class DepositAmountError extends Error {
+  constructor(
+    message = "Amount to deposit can't exceed 25% of total jobs to pay",
+  ) {
+    super(message)
+  }
+}
+
 class ForbiddenError extends Error {
   constructor(message = 'Forbidden request') {
     super(message)
@@ -31,6 +39,7 @@ class ResourceNotFoundError extends Error {
 }
 
 module.exports = {
+  DepositAmountError,
   ForbiddenError,
   InvalidAmountError,
   InsufficientBalanceError,

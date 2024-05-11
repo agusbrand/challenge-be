@@ -26,6 +26,13 @@ module.exports = (sequelize, DataTypes) => {
       return this.type === Profile.TYPES.CLIENT
     }
 
+    isDepositAmountValid(depositAmount) {
+      return (
+        depositAmount instanceof Decimal &&
+        depositAmount.greaterThan(new Decimal(0))
+      )
+    }
+
     hasSufficientBalanceToPayAmount(amountToPay) {
       return this.balance.greaterThanOrEqualTo(amountToPay)
     }
