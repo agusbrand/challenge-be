@@ -91,6 +91,18 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize: sequelize,
       modelName: 'Profile',
+      scopes: {
+        contractors: {
+          where: {
+            type: Profile.TYPES.CONTRACTOR,
+          },
+        },
+        clients: {
+          where: {
+            type: Profile.TYPES.CLIENT,
+          },
+        },
+      },
     },
   )
 

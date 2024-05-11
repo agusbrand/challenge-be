@@ -32,6 +32,18 @@ class JobAlreadyPaidError extends Error {
   }
 }
 
+class NoBestClientsFoundError extends Error {
+  constructor(message = 'No best clients found') {
+    super(message)
+  }
+}
+
+class NoProfessionsFoundError extends Error {
+  constructor(message = 'No professions found for the given date range') {
+    super(message)
+  }
+}
+
 class ResourceNotFoundError extends Error {
   constructor(resourceName) {
     super(resourceName + ' not found')
@@ -44,5 +56,7 @@ module.exports = {
   InvalidAmountError,
   InsufficientBalanceError,
   JobAlreadyPaidError,
+  NoBestClientsFoundError,
+  NoProfessionsFoundError,
   ResourceNotFoundError,
 }
