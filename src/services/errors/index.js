@@ -6,6 +6,24 @@ class ForbiddenError extends Error {
   }
 }
 
+class InvalidAmountError extends Error {
+  constructor(message = 'Invalid amount') {
+    super(message)
+  }
+}
+
+class InsufficientBalanceError extends Error {
+  constructor(message = 'Insufficient balance') {
+    super(message)
+  }
+}
+
+class JobAlreadyPaidError extends Error {
+  constructor(message = 'Job was already paid') {
+    super(message)
+  }
+}
+
 class ResourceNotFoundError extends Error {
   constructor(resourceName) {
     super(resourceName + ' not found')
@@ -14,5 +32,8 @@ class ResourceNotFoundError extends Error {
 
 module.exports = {
   ForbiddenError,
+  InvalidAmountError,
+  InsufficientBalanceError,
+  JobAlreadyPaidError,
   ResourceNotFoundError,
 }

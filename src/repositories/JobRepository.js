@@ -16,6 +16,21 @@ class JobRepository {
       ...options,
     })
   }
+
+  static findById(id, options) {
+    return Job.findOne({
+      where: { id: id },
+      ...options,
+    })
+  }
+
+  static getContract(job, options) {
+    return job.getContract(options)
+  }
+
+  static setJobAsPaid(job, options) {
+    return job.update({ paid: true, paymentDate: new Date() }, options)
+  }
 }
 
 module.exports = JobRepository

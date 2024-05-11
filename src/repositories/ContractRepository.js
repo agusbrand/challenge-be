@@ -15,6 +15,10 @@ class ContractRepository {
       method: ['forProfile', profile],
     }).findAll()
   }
+
+  static getContractor(contract, options) {
+    return contract.getContractor(options)
+  }
 }
 
 module.exports = ContractRepository
