@@ -9,6 +9,12 @@ class ContractRepository {
       ...options,
     })
   }
+
+  static getNonTerminatedContractsForProfile(profile) {
+    return Contract.scope('nonTerminated', {
+      method: ['forProfile', profile],
+    }).findAll()
+  }
 }
 
 module.exports = ContractRepository

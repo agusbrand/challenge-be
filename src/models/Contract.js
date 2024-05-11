@@ -1,6 +1,6 @@
 'use strict'
 
-const { Model } = require('sequelize')
+const { Model, Op } = require('sequelize')
 
 module.exports = (sequelize, DataTypes) => {
   class Contract extends Model {
@@ -8,6 +8,12 @@ module.exports = (sequelize, DataTypes) => {
       Contract.belongsTo(models.Profile, { as: 'Contractor' })
       Contract.belongsTo(models.Profile, { as: 'Client' })
       Contract.hasMany(models.Job)
+    }
+
+    static STATUSES = {
+      NEW: 'new',
+      IN_PROGRESS: 'in_progress',
+      TERMINATED: 'terminated',
     }
 
     hasProfile(profile) {
@@ -30,12 +36,30 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       status: {
-        type: DataTypes.ENUM('new', 'in_progress', 'terminated'),
+        type: DataTypes.ENUM(
+          Contract.STATUSES.NEW,
+          Contract.STATUSES.IN_PROGRESS,
+          Contract.STATUSES.TERMINATED,
+        ),
       },
     },
     {
       sequelize,
       modelName: 'Contract',
+      scopes: {
+        forProfile(profile) {
+          return {
+            where: {
+              [Op.or]: [{ ClientId: profile.id }, { ContractorId: profile.id }],
+            },
+          }
+        },
+        nonTerminated: {
+          where: {
+            status: [Contract.STATUSES.NEW, Contract.STATUSES.IN_PROGRESS],
+          },
+        },
+      },
     },
   )
 

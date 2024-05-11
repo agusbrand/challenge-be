@@ -29,4 +29,18 @@ const getContract = async (req, res) => {
   }
 }
 
-module.exports = { getContract }
+const getContracts = async (req, res) => {
+  try {
+    const profile = req.profile
+
+    const contracts = await ContractService.getNonTerminatedContractsForProfile(
+      { profile },
+    )
+
+    res.status(200).json(contracts)
+  } catch {
+    res.status(500).end()
+  }
+}
+
+module.exports = { getContract, getContracts }

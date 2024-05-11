@@ -16,6 +16,10 @@ class ContractService {
 
     return contract
   }
+
+  static async getNonTerminatedContractsForProfile({ profile }) {
+    return await ContractRepository.getNonTerminatedContractsForProfile(profile)
+  }
 }
 
 module.exports = ContractService
