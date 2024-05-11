@@ -22,7 +22,8 @@
     "eslint": "^9.2.0",
     "globals": "^15.2.0",
     "nodemon": "^2.0.22",
-    "prettier": "3.2.5"
+    "prettier": "3.2.5",
+    "sequelize-cli": "^6.6.2"
   },
   "engines": {
     "node": ">=10.16.3"
