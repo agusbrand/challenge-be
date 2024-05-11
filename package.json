@@ -12,14 +12,17 @@
     "start": "nodemon ./src/server.js",
     "seed": "node ./scripts/seedDb.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write ."
   },
   "devDependencies": {
     "@eslint/js": "^9.2.0",
     "concurrently": "^8.0.1",
     "eslint": "^9.2.0",
     "globals": "^15.2.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "prettier": "3.2.5"
   },
   "engines": {
     "node": ">=10.16.3"
